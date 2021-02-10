@@ -7,5 +7,5 @@ A prototyp not a finished product
 130 hours for budget on this project.
 for more info see -> [Time_Estimate_File](https://github.com/Pehrsonal/progressbar-for-Golang/blob/main/TIME_ESTIMATE.md)
 
-# todo list
+# Todo List
 [Link to TODO LIST](https://github.com/Pehrsonal/progressbar-for-Golang/projects/1)
