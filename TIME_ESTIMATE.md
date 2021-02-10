@@ -29,3 +29,8 @@ Total time estimated -> 72
 
 ### Version 2
 #### done at 2021-02-17
+
+| TO DO | Time Update |
+| ------ | ----------- |
+| crash course | 8 -> 8 |
+| golangg.org tutorial | 5 -> 6 |
