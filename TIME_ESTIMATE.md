@@ -32,5 +32,5 @@ Total time estimated -> 72
 
 | TO DO | Time Update |
 | ------ | ----------- |
-| crash course | 8 -> 8 |
-| golangg.org tutorial | 5 -> 6 |
+| crash course | 8 --> 8 |
+| golangg.org tutorial | 5 --> 6 |
