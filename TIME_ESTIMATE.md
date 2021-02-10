@@ -28,7 +28,7 @@ Total time estimated -> 72
 
 ### Version 2
 #### done at 2021-02-03 -- 2021-02-17
-
+##### TIME UPDATE:
 | TO DO | Time Update |
 | ------ | ----------- |
 | crash course | 8 --> 8 |
