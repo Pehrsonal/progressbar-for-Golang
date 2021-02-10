@@ -4,19 +4,18 @@
 #### done at 2021-01-27 -- 2021-02-03
 
 ### Learning Phase:
-  + 8 hour crash course on youtube
-  + 5 hour tutorial on golang.org
-  + 5 hours introduction to go, book on O'reilly
-  + 5 hours create basic implementations and features in Go for practise
++ 8 hour crash course on youtube
++ 5 hour tutorial on golang.org
++ 5 hours introduction to go, book on O'reilly
++ 5 hours create basic implementations and features in Go for practise
 
-Learn and explore TQMD in Python what features their is 
-and how it is implemented 8 hours
-Character based ASCII
++ Learn and explore TQMD in Python what features their is and how it is implemented 8 hours
+
 have not looked into technical solutions, still in the learning phase.
 
-Development phase:
-24 hours Start implementing basics around my progress bar into GO 
-17 hours get a functional progress bar. 
+### Development phase:
++ 24 hours Start implementing basics around my progress bar into GO 
++ 17 hours get a functional progress bar. 
 
 A running prototype to Sprint 1 2021-02-17
 
