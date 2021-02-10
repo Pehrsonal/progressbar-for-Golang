@@ -3,11 +3,11 @@
 ### Version 1 
 #### done at 2021-01-27 -- 2021-02-03
 
-Learning Phase:
-8 hour crash course on youtube
-5 hour tutorial on golang.org
-5 hours introduction to go, book on O'reilly
-5 hours create basic implementations and features in Go for practise
++Learning Phase:
++8 hour crash course on youtube
++5 hour tutorial on golang.org
++5 hours introduction to go, book on O'reilly
++5 hours create basic implementations and features in Go for practise
 
 Learn and explore TQMD in Python what features their is 
 and how it is implemented 8 hours
