@@ -5,4 +5,4 @@ A prototyp not a finished product
 
 # Time limits 
 130 hours for budget on this project.
-for more info see -> [Time_Estimate File](https://github.com/Pehrsonal/progressbar-for-Golang/blob/main/TIME_ESTIMATE.md)
+for more info see -> [Time_Estimate_File](https://github.com/Pehrsonal/progressbar-for-Golang/blob/main/TIME_ESTIMATE.md)
