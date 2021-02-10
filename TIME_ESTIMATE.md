@@ -3,7 +3,7 @@
 ### Version 1 
 #### done at 2021-01-27 -- 2021-02-03
 
-# + Learning Phase:
+### Learning Phase:
   + 8 hour crash course on youtube
   + 5 hour tutorial on golang.org
   + 5 hours introduction to go, book on O'reilly
