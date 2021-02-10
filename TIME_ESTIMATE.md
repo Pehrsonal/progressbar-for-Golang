@@ -34,3 +34,5 @@ Total time estimated -> 72
 | ------ | ----------- |
 | crash course | 8 --> 8 |
 | golang.org tutorial | 5 --> 6 |
+| set up GitHub page | 0 --> 2 |
+
