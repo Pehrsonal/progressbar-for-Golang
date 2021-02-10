@@ -8,4 +8,4 @@ A prototyp not a finished product
 for more info see -> [Time_Estimate_File](https://github.com/Pehrsonal/progressbar-for-Golang/blob/main/TIME_ESTIMATE.md)
 
 # Todo List
-[Link to TODO LIST](https://github.com/Pehrsonal/progressbar-for-Golang/projects/1)
+[Link TODO LIST](https://github.com/Pehrsonal/progressbar-for-Golang/projects/1)
