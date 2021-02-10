@@ -1,7 +1,7 @@
 # TIME LIMIT 130 HOURS
 
 ### Version 1 
-#### done at 2021-02-03
+#### done at 2021-01-27 -- 2021-02-03
 
 Learning Phase:
 8 hour crash course on youtube
@@ -15,8 +15,8 @@ Character based ASCII
 have not looked into technical solutions, still in the learning phase.
 
 Development phase:
-Start implementing basics around my progress bar into GO . 24 hours
-get a functional progress bar. 17 hours
+24 hours Start implementing basics around my progress bar into GO 
+17 hours get a functional progress bar. 
 
 A running prototype to Sprint 1 2021-02-17
 
@@ -28,7 +28,7 @@ Remaining time not estimated....
 Total time estimated -> 72
 
 ### Version 2
-#### done at 2021-02-17
+#### done at 2021-02-03 -- 2021-02-17
 
 | TO DO | Time Update |
 | ------ | ----------- |
