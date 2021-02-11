@@ -9,3 +9,6 @@ for more info see -> [Time_Estimate_File](https://github.com/Pehrsonal/progressb
 
 # Todo List
 [Link TODO LIST](https://github.com/Pehrsonal/progressbar-for-Golang/projects/1)
+
+#Weekly Diary-bloog
+[Link Weekly Diary](https://docs.google.com/document/d/1dffjBnzQhBu6OpY11p0MNKGw9TnxKaFTgpuDHYp3rK4/edit?usp=sharing)
