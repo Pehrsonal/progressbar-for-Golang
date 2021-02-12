@@ -1,6 +1,6 @@
 # TIME LIMIT 130 HOURS
 
-### Version 1 
+## Version 1 
 #### done at 2021-01-27 -- 2021-02-03
 
 ### Learning Phase:
@@ -13,7 +13,7 @@
 
 have not looked into technical solutions, still in the learning phase.
 
-### Development phase:
+### Development Phase:
 + 24 hours Start implementing basics around my progress bar into GO 
 + 17 hours get a functional progress bar. 
 
@@ -26,12 +26,47 @@ and easier to run...
 Remaining time not estimated....
 Total time estimated -> 72
 
-### Version 2
+## Version 2
 #### done at 2021-02-03 -- 2021-02-17
 ##### TIME UPDATE:
-| TO DO | Time Update |
-| ------ | ----------- |
-| crash course | 8 --> 8 |
-| golang.org tutorial | 5 --> 6 |
-| set up GitHub page | 0 --> 2 |
+| TO DO | Time Update | Current status|
+| ------ | ----------- | ----------- |
+| crash course | 8 --> 8 | DONE |
+| golang.org tutorial | 5 --> 6 | DONE |
+| set up GitHub page | 0 --> 3 | DONE.. for now |
+| Reading and related exercises from book | 10 ->> 16 | Done |
+| explore TQDM | 8--> 6 | Done.. for now |
+| -------------| ------ | -------------- |
+ totalt time for Learning Phase : 39 hours
+
+| TO DO | Time Update | Current status|
+| ------ | ----------- | ----------- |
+| start implementing basics | 24 --> ?? | working |
+| "functional" progressbar with for-loop | 17 --> ?? | working |
+| make possilble import progressbar from github | 2 | working|
+
+#### Updated Development Phase
+
+### Finishing Bar Phase:
++ 3 hours create better strcture in project and code
++ 5 hours error handling for progressbar (low prio)
++ 2 testing program for testing the progressbar (low prio)
+totalt time for Finishing bar Phase : 10 hours
+### After Work Phase:
++ 3 hours presentation 
++ 2 hours code-comments for better understanding
++ 2 hour create README.md for install and use
+totalt time for After Work Phase : 7 hours
+
+Overall time total: xxx / 130
+
+## Version 3 2021-02-17 -- 2021-xxxxx
+will be updated...
+
+
+
+ 
+
+
+
 
