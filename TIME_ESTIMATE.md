@@ -44,8 +44,10 @@ Total time estimated -> 72
 | start implementing basics | 24 --> ?? | working |
 | "functional" progressbar with for-loop | 17 --> ?? | working |
 | make possilble import progressbar from github | 2 | working|
-
-#### Updated Development Phase
+|  |  |  |
+|  |  |  |
+|  |  |  |
+total time for Development Phase: xxx
 
 ### Finishing Bar Phase:
 + 3 hours create better strcture in project and code
