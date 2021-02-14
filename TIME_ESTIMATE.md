@@ -35,9 +35,9 @@ Total time estimated -> 72
 | golang.org tutorial | 5 --> 6 | DONE |
 | set up GitHub page | 0 --> 3 | DONE.. for now |
 | Reading and related exercises from book | 10 ->> 16 | Done |
-| explore TQDM | 8--> 6 | Done.. for now |
+| explore TQDM | 8--> 4 | Done.. for now |
 | -------------| ------ | -------------- |
- totalt time for Learning Phase : 39 hours
+ totalt time for Learning Phase : 37 hours
 
 | TO DO | Time Update | Current status|
 | ------ | ----------- | ----------- |
