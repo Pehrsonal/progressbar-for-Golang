@@ -47,6 +47,7 @@ Total time estimated -> 72
 | fixed size of bar | 2 --> | TODO |
 | update existing bar / dont print new | 2 --> | TODO |
 | more customable | 4 --> | TODO |
+| -------------| ------ | -------------- |
 total time for Development Phase for now...: 49
 
 ### Finishing Bar Phase:
