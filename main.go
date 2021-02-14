@@ -34,7 +34,7 @@ func (theBar *theBar) update(current int) {
 	if theBar.atWhatPercent != last {
 		theBar.rePrint = strings.Repeat(theBar.loading, int(theBar.curPercent*theBar.loadingLenght/100))
 	}
-	fmt.Printf("[%-40s]%3d%% %8d/%d\n", theBar.rePrint, theBar.atWhatPercent, theBar.curPercent, theBar.max)
+	fmt.Printf("[%-50s]%3d%% %4d/%d\n", theBar.rePrint, theBar.atWhatPercent, theBar.curPercent, theBar.max)
 }
 
 func main() {
