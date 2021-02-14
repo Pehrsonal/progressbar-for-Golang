@@ -61,7 +61,7 @@ totalt time for Finishing bar Phase : 10 hours
 + 2 hour create README.md for install and use
 totalt time for After Work Phase : 7 hours
 
-Overall time total: 105 / 125
+Overall time total: 103 / 125
 
 ## Version 3 2021-02-17 -- 2021-xxxxx
 will be updated...
