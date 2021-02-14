@@ -53,7 +53,7 @@ total time for Development Phase for now...: 49
 ### Finishing Bar Phase:
 + 3 hours create better strcture in project and code
 + 5 hours error handling for progressbar (low prio)
-+ 2 testing program for testing the progressbar (low prio)
++ 2 hours testing program for testing the progressbar (low prio)
 totalt time for Finishing bar Phase : 10 hours
 ### After Work Phase:
 + 3 hours presentation 
