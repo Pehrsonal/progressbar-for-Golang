@@ -41,14 +41,13 @@ Total time estimated -> 72
 
 | TO DO | Time Update | Current status|
 | ------ | ----------- | ----------- |
-| start implementing basics | 24 --> ?? | working |
-| "functional" progressbar with for-loop | 15 --> ?? | working |
+| start implementing basic progressbar with for-loop | 30 --> ?? | working |
 | make possilble import progressbar from github | 2 | working|
 | fixed size of bar | 2 --> | TODO |
 | update existing bar / dont print new | 2 --> | TODO |
 | more customable | 4 --> | TODO |
 | -------------| ------ | -------------- |
-total time for Development Phase for now...: 49
+total time for Development Phase for now...: 40
 
 ### Finishing Bar Phase:
 + 3 hours create better strcture in project and code
@@ -61,7 +60,7 @@ totalt time for Finishing bar Phase : 10 hours
 + 2 hour create README.md for install and use
 totalt time for After Work Phase : 7 hours
 
-Overall time total: 103 / 125
+Overall time total: 99 / 125
 
 ## Version 3 2021-02-17 -- 2021-xxxxx
 will be updated...
