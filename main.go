@@ -7,7 +7,7 @@ import (
 )
 
 type theBar struct {
-	atWhatPercent int
+	whatPercent int
 	curPercent    int
 	rePrint       string
 	loading       string
@@ -20,7 +20,7 @@ func (theBar *theBar) createBar(current, max int) {
 	theBar.loading = "#"
 	theBar.loadingLenght = 40
 	theBar.max = max
-	theBar.atWhatPercent = theBar.getPercent()
+	theBar.whatPercent = theBar.getPercent()
 }
 
 func (theBar *theBar) getPercent() int {
@@ -29,12 +29,12 @@ func (theBar *theBar) getPercent() int {
 
 func (theBar *theBar) update(current int) {
 	theBar.curPercent = current
-	last := theBar.atWhatPercent
-	theBar.atWhatPercent = theBar.getPercent()
-	if theBar.atWhatPercent != last {
+	last := theBar.whatPercent
+	theBar.whatPercent = theBar.getPercent()
+	if theBar.whatPercent != last {
 		theBar.rePrint = strings.Repeat(theBar.loading, int(theBar.curPercent*theBar.loadingLenght/100))
 	}
-	fmt.Printf("[%-50s]%3d%% %4d/%d\n", theBar.rePrint, theBar.atWhatPercent, theBar.curPercent, theBar.max)
+	fmt.Printf("[%-50s]%3d%% %4d/%d\n", theBar.rePrint, theBar.whatPercent, theBar.curPercent, theBar.max)
 }
 
 func main() {
@@ -47,7 +47,7 @@ func main() {
 	for {
 		time.Sleep(15 * time.Millisecond)
 
-		if progressBar.atWhatPercent == 100 {
+		if progressBar.whatPercent == 100 {
 			break
 		}
 		start = start + 1
