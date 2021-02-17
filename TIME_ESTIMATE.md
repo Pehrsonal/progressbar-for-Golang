@@ -31,31 +31,31 @@ Total time estimated -> 72
 ##### TIME UPDATE:
 | TO DO | Time Update | Current status|
 | ------ | ----------- | ----------- |
-| crash course | 8 --> 8 | DONE |
+| crash course | 6 --> 6 | DONE |
 | golang.org tutorial | 5 --> 6 | DONE |
 | set up GitHub page | 0 --> 3 | DONE.. for now |
 | Reading and related exercises from book | 10 ->> 16 | Done |
 | explore TQDM | 8--> 4 | Done.. for now |
 | -------------| ------ | -------------- |
- totalt time for Learning Phase : 37 hours
+ totalt time for Learning Phase : 35 hours
 
 | TO DO | Time Update | Current status|
 | ------ | ----------- | ----------- |
-| start implementing basic progressbar with for-loop | 30 --> ?? | working |
+| start implementing basic progressbar with for-loop | 35 --> ?? | working |
 | make possilble import progressbar from github | 2 | working|
 | fixed size of bar | 2 --> | TODO |
 | update existing bar / dont print new | 2 --> | TODO |
 | more customable | 4 --> | TODO |
 | -------------| ------ | -------------- |
-total time for Development Phase for now...: 40
+total time for Development Phase for now...: 45
 
 ### Finishing Bar Phase:
-+ 3 hours create better strcture in project and code
++ 4 hours create better strcture in project and code
 + 5 hours error handling for progressbar (low prio)
-+ 2 hours testing program for testing the progressbar (low prio)
++ 3 hours testing program for testing the progressbar (low prio)
 totalt time for Finishing bar Phase : 10 hours
 ### After Work Phase:
-+ 3 hours presentation 
++ 3 hours final presentation 
 + 2 hours code-comments for better understanding
 + 2 hour create README.md for install and use
 totalt time for After Work Phase : 7 hours
