@@ -7,7 +7,7 @@ import (
 )
 
 type theBar struct {
-	whatPercent int
+	whatPercent   int
 	curPercent    int
 	rePrint       string
 	loading       string
