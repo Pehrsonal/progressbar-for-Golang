@@ -1,101 +1,89 @@
 package bar
 
-import {
+import (
+	"fmt"
 	"strings"
-	"errors"
+	"sync"
 	"time"
+)
 
+type TheBar struct {
+	barWidth       int
+	value          int
+	maxValue       int
+	startTime      time.Time
+	theme          Style
+	showPercentage bool
+	showTime       bool
+	isFinished     bool
+	lock           sync.Mutex
 }
 
-type style struct {
-	startCharachter    byte
-	progressChatachter byte
-	endCharachter      byte
+type Style struct {
+	StartChar    rune
+	EndChar      rune
+	ProgressChar rune
 }
 
-type theBar struct {
-	barWitdh 	int
-	look     	style
-	val         int
-	maxVal      int
-	startTime   time.Time
-	isDone		bool
-}
+func New(maxValue int) *TheBar {
 
-//function for setting the width of the bar
-func barWidth(width int) func(*Bar) error {
-	return func(b *Bar) error {
-		if width <= 0 {
-			return errors.New("width must be positive")
-		}
-		b.width = width
-		return nil
-	}
-}
-	
-
-func New(maxVal int, kwargs ...func(*theBar) error) (*theBar, error) {
-
-	if maxVal <= 0 {
-		return nil, errors.New("maxVal must be positive")
+	theme := Style{
+		StartChar:    '{',
+		EndChar:      '}',
+		ProgressChar: '#',
 	}
 
-	//Default values
-	theme := style{
-		startCharachter:    '[',
-		progressChatachter: '#',
-		endCharachter:      ']',
-	}
-	progressBar := &bar{
-		width:          50,
-		val:            0,
-		maxVal:         maxVal,
+	bar := &TheBar{
+		barWidth:       50,
+		value:          0,
+		maxValue:       maxValue,
 		theme:          theme,
-		isDone:     false,
+		showPercentage: true,
+		showTime:       true,
+		isFinished:     false,
 	}
 
-	// Apply optional arguments such as special width... will look into more
-	for _, arg := range kwargs {
-		err := arg(bar)
-		if err != nil {
-			return nil, err
-		}
-	}
-
-	return progressBar, nil
+	return bar
 }
 
-func (b *theBar) update(i int) {
+func (b *TheBar) update(i int) {
 
 	if b.isFinished {
 		return
 	}
 
-	// Generate characters to indicate progress
-	level := b.width * i / b.maxVal
+	level := b.barWidth * i / b.maxValue
 	progress := strings.Repeat(string(b.theme.ProgressChar), level)
-	blanks := strings.Repeat(" ", b.width-level)
+	blanks := strings.Repeat(" ", b.barWidth-level)
 
 	fmt.Printf("\rProgress: %s%s%s%s", string(b.theme.StartChar), progress, blanks, string(b.theme.EndChar))
 
-	b.val = i
+	if b.showPercentage {
+		percentage := 100 * float32(i) / float32(b.maxValue)
+		fmt.Printf(" %.2f%%", percentage)
+	}
+	if b.showTime {
+		elapsed := time.Since(b.startTime).Seconds()
+		fmt.Printf(" - %.2fs ", elapsed)
+	}
+
+	b.value = i
 }
 
-func (b *theBar) end() {
+func (b *TheBar) end() {
 
-	if b.isDone {
+	if b.isFinished {
 		return
 	}
 
-	b.update(b.maxVal)
-	b.isDone = true
+	b.update(b.maxValue)
+	b.isFinished = true
 
 	elapsed := time.Since(b.startTime)
-	fmt.Printf("\nWall time: %f\n", elapsed.Seconds())
+	fmt.Printf("\nTime it took: %fs\n", elapsed.Seconds())
 }
 
-// Set sets a new value of the Bar
-func (b *Bar) Set(i int) {
+func (b *TheBar) Set(i int) {
 	b.lock.Lock()
 	defer b.lock.Unlock()
 
@@ -103,7 +91,7 @@ func (b *Bar) Set(i int) {
 		b.Start()
 	}
 
-	if i >= b.maxVal {
+	if i >= b.maxValue {
 		b.end()
 	} else if i < 0 {
 		b.update(0)
@@ -112,21 +100,26 @@ func (b *Bar) Set(i int) {
 	}
 }
 
-func (b *theBar) Add(i int) {
-	b.Set(b.val + i)
+func (b *TheBar) Add(i int) {
+	b.Set(b.value + i)
 }
 
-func (b *theBar) Increment() {
+func (b *TheBar) Increment() {
 	b.Add(1)
 }
 
-
-func (b *theBar) Start() {
+func (b *TheBar) Start() {
 	b.startTime = time.Now()
 	fmt.Printf("\n")
 	b.Set(0)
 }
 
-func (b *theBar) Finish() {
-	b.Set(b.maxVal)
+func StartNew(maxValue int) *TheBar {
+	bar := New(maxValue)
+	bar.Start()
+	return bar
+}
+
+func (b *TheBar) Finish() {
+	b.Set(b.maxValue)
 }
