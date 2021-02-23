@@ -1,3 +1,9 @@
+## Install
+
+```
+go get -u github.com/Pehrsonal/Progressbar-For-Golang
+```
+
 # Progressbar-For-Golang
 Develop of a simple progressbar in Go. School project in the course PA1456 at BTH
 
