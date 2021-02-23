@@ -87,7 +87,7 @@ func (b *Bar) end() {
 	fmt.Printf("\nWall time: %f\n", elapsed.Seconds())
 }
 
-func (b *Bar) Set(i int) {
+func (b *Bar) set(i int) {
 	b.lock.Lock()
 	defer b.lock.Unlock()
 
@@ -104,18 +104,18 @@ func (b *Bar) Set(i int) {
 	}
 }
 
-func (b *Bar) Add(i int) {
-	b.Set(b.value + i)
+func (b *Bar) add(i int) {
+	b.set(b.value + i)
 }
 
 func (b *Bar) Increment() {
-	b.Add(1)
+	b.add(1)
 }
 
 func (b *Bar) Start() {
 	b.startTime = time.Now()
 	fmt.Printf("\n")
-	b.Set(0)
+	b.set(0)
 }
 
 func StartNew(maxValue int) *Bar {
@@ -125,5 +125,5 @@ func StartNew(maxValue int) *Bar {
 }
 
 func (b *Bar) Finish() {
-	b.Set(b.maxValue)
+	b.set(b.maxValue)
 }
