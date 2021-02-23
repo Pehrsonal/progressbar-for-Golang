@@ -22,9 +22,9 @@ type Bar struct {
 }
 
 type Style struct {
-	StartChar    rune
-	EndChar      rune
-	ProgressChar rune
+	StartChar    byte
+	EndChar      byte
+	ProgressChar byte
 }
 
 func New(maxValue int) *Bar {
