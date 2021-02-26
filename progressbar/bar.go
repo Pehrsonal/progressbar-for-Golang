@@ -7,8 +7,9 @@ import (
 	"time"
 )
 
-type Bar struct {
-	barWidth       int
+//TheBar struct for declaring whats inside
+type TheBar struct {
+	width          int
 	value          int
 	maxValue       int
 	startTime      time.Time
@@ -19,14 +20,23 @@ type Bar struct {
 	lock           sync.Mutex
 }
 
+//Style struct to be able to change how the bar will look at
 type Style struct {
 	StartChar    byte
 	EndChar      byte
 	ProgressChar byte
 }
 
-//New Creates a new Bar
-func New(maxValue int) *Bar {
+// BarWidth returns a function for setting the width of a Bar.
+func BarWidth(width int) func(*TheBar) {
+	return func(b *TheBar) {
+		if width <= 0 {
+		}
+		b.width = width
+	}
+}
+
+func New(maxValue int, kwargs ...func(*TheBar)) *TheBar {
 
 	theme := Style{
 		StartChar:    '{',
@@ -34,8 +44,8 @@ func New(maxValue int) *Bar {
 		ProgressChar: '#',
 	}
 
-	bar := &Bar{
-		barWidth:       50,
+	bar := &TheBar{
+		width:          50,
 		value:          0,
 		maxValue:       maxValue,
 		theme:          theme,
@@ -47,17 +57,15 @@ func New(maxValue int) *Bar {
 	return bar
 }
 
-func (b *Bar) update(i int) {
+func (b *TheBar) update(i int) {
 
 	if b.isFinished {
 		return
 	}
 
-	level := b.barWidth * i / b.maxValue
+	level := b.width * i / b.maxValue
 	progress := strings.Repeat(string(b.theme.ProgressChar), level)
-	blanks := strings.Repeat(" ", b.barWidth-level)
-
-	//color.Red("We have red") // testing color import
+	blanks := strings.Repeat(" ", b.width-level)
 
 	fmt.Printf("\rProgress: %s%s%s%s", string(b.theme.StartChar), progress, blanks, string(b.theme.EndChar))
 
@@ -65,7 +73,6 @@ func (b *Bar) update(i int) {
 		percentage := 100 * float32(i) / float32(b.maxValue)
 		fmt.Printf(" %.2f%%", percentage)
 	}
-
 	if b.showTime {
 		elapsed := time.Since(b.startTime).Seconds()
 		fmt.Printf(" - %.2fs ", elapsed)
@@ -74,7 +81,7 @@ func (b *Bar) update(i int) {
 	b.value = i
 }
 
-func (b *Bar) end() {
+func (b *TheBar) end() {
 
 	if b.isFinished {
 		return
@@ -84,10 +91,10 @@ func (b *Bar) end() {
 	b.isFinished = true
 
 	elapsed := time.Since(b.startTime)
-	fmt.Printf("\nWall time: %f\n", elapsed.Seconds())
+	fmt.Printf("\nTime it took: %fs\n", elapsed.Seconds())
 }
 
-func (b *Bar) set(i int) {
+func (b *TheBar) Set(i int) {
 	b.lock.Lock()
 	defer b.lock.Unlock()
 
@@ -104,26 +111,28 @@ func (b *Bar) set(i int) {
 	}
 }
 
-func (b *Bar) add(i int) {
-	b.set(b.value + i)
+func (b *TheBar) Add(i int) {
+	b.Set(b.value + i)
 }
 
-func (b *Bar) Increment() {
-	b.add(1)
+func (b *TheBar) Increment() {
+	b.Add(1)
 }
 
-func (b *Bar) Start() {
+func (b *TheBar) Start() {
 	b.startTime = time.Now()
 	fmt.Printf("\n")
-	b.set(0)
+	b.Set(0)
 }
 
-func StartNew(maxValue int) *Bar {
-	bar := New(maxValue)
+func StartNew(maxValue int, arg ...func(*TheBar)) *TheBar {
+	bar := New(maxValue, arg...)
+
 	bar.Start()
 	return bar
 }
 
-func (b *Bar) Finish() {
-	b.set(b.maxValue)
+func (b *TheBar) Finish() {
+	b.Set(b.maxValue)
+
 }
