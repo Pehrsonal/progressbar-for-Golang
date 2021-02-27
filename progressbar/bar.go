@@ -7,8 +7,8 @@ import (
 	"time"
 )
 
-//TheBar struct for declaring whats inside
-type TheBar struct {
+//theBar struct for declaring whats inside
+type theBar struct {
 	width          int
 	value          int
 	maxValue       int
@@ -20,31 +20,32 @@ type TheBar struct {
 	lock           sync.Mutex
 }
 
-//Style struct to be able to change how the bar will look at
+//Style is how to progressbar will look
 type Style struct {
 	StartChar    byte
 	EndChar      byte
 	ProgressChar byte
 }
 
-// BarWidth returns a function for setting the width of a Bar.
-func BarWidth(width int) func(*TheBar) {
-	return func(b *TheBar) {
-		if width <= 0 {
-		}
-		b.width = width
+// Change is the type to pass in when changing the default values in the progressbar
+type Change func(bar *theBar)
+
+// SetWidth let you change the width of the progressbar
+func SetWidth(setW int) Change {
+	return func(bar *theBar) {
+		bar.width = setW
 	}
 }
 
-func New(maxValue int, kwargs ...func(*TheBar)) *TheBar {
+func New(maxValue int, arg ...Change) *theBar {
 
+	//Default values of the progressbar
 	theme := Style{
 		StartChar:    '{',
 		EndChar:      '}',
 		ProgressChar: '#',
 	}
-
-	bar := &TheBar{
+	bar := theBar{
 		width:          50,
 		value:          0,
 		maxValue:       maxValue,
@@ -54,10 +55,14 @@ func New(maxValue int, kwargs ...func(*TheBar)) *TheBar {
 		isFinished:     false,
 	}
 
-	return bar
+	for _, o := range arg {
+		o(&bar)
+	}
+
+	return &bar
 }
 
-func (b *TheBar) update(i int) {
+func (b *theBar) update(i int) {
 
 	if b.isFinished {
 		return
@@ -81,7 +86,7 @@ func (b *TheBar) update(i int) {
 	b.value = i
 }
 
-func (b *TheBar) end() {
+func (b *theBar) end() {
 
 	if b.isFinished {
 		return
@@ -94,7 +99,7 @@ func (b *TheBar) end() {
 	fmt.Printf("\nTime it took: %fs\n", elapsed.Seconds())
 }
 
-func (b *TheBar) Set(i int) {
+func (b *theBar) Set(i int) {
 	b.lock.Lock()
 	defer b.lock.Unlock()
 
@@ -111,28 +116,27 @@ func (b *TheBar) Set(i int) {
 	}
 }
 
-func (b *TheBar) Add(i int) {
+func (b *theBar) Add(i int) {
 	b.Set(b.value + i)
 }
 
-func (b *TheBar) Increment() {
+func (b *theBar) Increment() {
 	b.Add(1)
 }
 
-func (b *TheBar) Start() {
+func (b *theBar) Start() {
 	b.startTime = time.Now()
 	fmt.Printf("\n")
 	b.Set(0)
 }
 
-func StartNew(maxValue int, arg ...func(*TheBar)) *TheBar {
+func StartNew(maxValue int, arg ...Change) *theBar {
 	bar := New(maxValue, arg...)
 
 	bar.Start()
 	return bar
 }
 
-func (b *TheBar) Finish() {
+func (b *theBar) Finish() {
 	b.Set(b.maxValue)
-
 }
