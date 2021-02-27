@@ -37,6 +37,7 @@ func SetWidth(setW int) Change {
 	}
 }
 
+//New Creates a new bar with default values
 func New(maxValue int, arg ...Change) *theBar {
 
 	//Default values of the progressbar
@@ -129,7 +130,7 @@ func (b *theBar) Start() {
 	fmt.Printf("\n")
 	b.Set(0)
 }
-
+//StartNew creates a new bar with default values and takes in Change values if wanted + starts the counter
 func StartNew(maxValue int, arg ...Change) *theBar {
 	bar := New(maxValue, arg...)
 
@@ -139,4 +140,9 @@ func StartNew(maxValue int, arg ...Change) *theBar {
 
 func (b *theBar) Finish() {
 	b.Set(b.maxValue)
+}
+
+//GetMaxvalue returns the maxvalue from the bar
+func (b *theBar) GetMaxvalue() int {
+	return b.maxValue
 }

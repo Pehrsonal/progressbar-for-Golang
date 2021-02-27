@@ -8,8 +8,8 @@ import (
 
 func main() {
 
-	test := progressbar.StartNew(30)
-	for i := 0; i < 30; i++ {
+	test := progressbar.StartNew(500, progressbar.SetWidth(100))
+	for i := 0; i < test.GetMaxvalue(); i++ {
 		test.Increment()
 		time.Sleep(100 * time.Millisecond)
 
