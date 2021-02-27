@@ -36,6 +36,12 @@ func SetWidth(setW int) Change {
 		bar.width = setW
 	}
 }
+//SetStyle to change the style of the progressbar
+func SetStyle(style Style) Change {
+	return func(bar *theBar) {
+		bar.theme = style
+	}
+}
 
 //New Creates a new bar with default values
 func New(maxValue int, arg ...Change) *theBar {
@@ -130,6 +136,7 @@ func (b *theBar) Start() {
 	fmt.Printf("\n")
 	b.Set(0)
 }
+
 //StartNew creates a new bar with default values and takes in Change values if wanted + starts the counter
 func StartNew(maxValue int, arg ...Change) *theBar {
 	bar := New(maxValue, arg...)
