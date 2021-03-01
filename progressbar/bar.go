@@ -36,10 +36,25 @@ func SetWidth(setW int) Change {
 		bar.width = setW
 	}
 }
+
 //SetStyle to change the style of the progressbar
 func SetStyle(style Style) Change {
 	return func(bar *theBar) {
 		bar.theme = style
+	}
+}
+
+// BarShowPercent returns a function for setting whether the Bar displays a percentage.
+func BarShowPercent(show bool) func(*theBar) {
+	return func(b *theBar) {
+		b.showPercentage = show
+	}
+}
+
+// BarShowTime returns a function for setting whether the Bar displays elapsed time.
+func BarShowTime(showTime bool) func(*theBar) {
+	return func(b *theBar) {
+		b.showTime = showTime
 	}
 }
 
