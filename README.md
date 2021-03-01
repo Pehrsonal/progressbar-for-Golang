@@ -4,7 +4,7 @@
 go get -u github.com/Pehrsonal/Progressbar-For-Golang
 ```
 ```
-In import -> "github.com/Pehrsonal/Progressbar-For-Golang/progressbar"
+In .go file import -> "github.com/Pehrsonal/Progressbar-For-Golang/progressbar"
 ```
 
 # Progressbar-For-Golang
