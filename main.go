@@ -16,6 +16,15 @@ func main() {
 		StartEndColor: "Red",
 		ProgressColor: "Yellow",
 	}
+
+	look1 := progressbar.Style{
+		StartChar:     "{",
+		EndChar:       "}",
+		ProgressChar:  "%",
+		StartEndColor: "Blue",
+		ProgressColor: "Red",
+	}
+
 	test := progressbar.StartNew(50, progressbar.SetWidth(50), progressbar.ShowPercent(false),
 		progressbar.ShowTime(false), progressbar.SetStyle(look), progressbar.NewDescription("HAHA"))
 
@@ -25,11 +34,19 @@ func main() {
 		test.Increment()
 		time.Sleep(60 * time.Millisecond)
 	}
+	test.Finish()
 	hest.Start()
 	for i := 0; i < hest.GetMaxvalue(); i++ {
 		hest.Increment()
 		time.Sleep(60 * time.Millisecond)
 	}
+	hest.Finish()
 
-	test.Finish()
+	ba := progressbar.StartNew(50, progressbar.SetWidth(10), progressbar.SetStyle(look1))
+	for i := 0; i < ba.GetMaxvalue(); i++ {
+		ba.Increment()
+		time.Sleep(60 * time.Millisecond)
+	}
+	ba.Finish()
+
 }

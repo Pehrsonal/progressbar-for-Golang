@@ -30,8 +30,13 @@ type Style struct {
 	ProgressColor string
 }
 
+//GetMaxvalue returns the maxvalue from the bar
+func (b *theBar) GetMaxvalue() int {
+	return b.maxValue
+}
+
 //New Creates a new bar with default values
-func New(maxValue int, arg ...Change) *theBar {
+func New(maxValue int, arg ...Change) (*theBar) {
 	//Default values of the progressbar
 	theme := Style{
 		StartChar:     "{",
@@ -125,11 +130,6 @@ func (b *theBar) Start() {
 	b.startTime = time.Now()
 	fmt.Printf("\n")
 	b.set(0)
-}
-
-//GetMaxvalue returns the maxvalue from the bar
-func (b *theBar) GetMaxvalue() int {
-	return b.maxValue
 }
 
 //StartNew creates a new bar with default values and takes in Change values if wanted + starts the counter
