@@ -24,6 +24,10 @@ func getGreen() func(...interface{}) string {
 	c := color.New(color.FgGreen).SprintFunc()
 	return c
 }
+func getYellow() func(...interface{}) string {
+	c := color.New(color.FgYellow).SprintFunc()
+	return c
+}
 
 func getColor(rec string) func(...interface{}) string {
 	switch rec {
@@ -37,6 +41,8 @@ func getColor(rec string) func(...interface{}) string {
 		return getBlue()
 	case "Green":
 		return getGreen()
+	case "Yellow":
+		return getYellow()
 	default:
 		return getWhite()
 	}
