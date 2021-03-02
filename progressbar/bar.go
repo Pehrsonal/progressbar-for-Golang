@@ -18,54 +18,27 @@ type theBar struct {
 	showTime       bool
 	isFinished     bool
 	lock           sync.Mutex
+	description    string
 }
 
 //Style is how to progressbar will look
 type Style struct {
-	StartChar    byte
-	EndChar      byte
-	ProgressChar byte
-}
-
-// Change is the type to pass in when changing the default values in the progressbar
-type Change func(bar *theBar)
-
-// SetWidth let you change the width of the progressbar
-func SetWidth(setW int) Change {
-	return func(bar *theBar) {
-		bar.width = setW
-	}
-}
-
-//SetStyle to change the style of the progressbar
-func SetStyle(style Style) Change {
-	return func(bar *theBar) {
-		bar.theme = style
-	}
-}
-
-// BarShowPercent returns a function for setting whether the Bar displays a percentage.
-func BarShowPercent(show bool) func(*theBar) {
-	return func(b *theBar) {
-		b.showPercentage = show
-	}
-}
-
-// BarShowTime returns a function for setting whether the Bar displays elapsed time.
-func BarShowTime(showTime bool) func(*theBar) {
-	return func(b *theBar) {
-		b.showTime = showTime
-	}
+	StartChar     string
+	EndChar       string
+	ProgressChar  string
+	StartEndColor string
+	ProgressColor string
 }
 
 //New Creates a new bar with default values
 func New(maxValue int, arg ...Change) *theBar {
-
 	//Default values of the progressbar
 	theme := Style{
-		StartChar:    '{',
-		EndChar:      '}',
-		ProgressChar: '#',
+		StartChar:     "{",
+		EndChar:       "}",
+		ProgressChar:  "#",
+		StartEndColor: "White",
+		ProgressColor: "White",
 	}
 	bar := theBar{
 		width:          50,
@@ -75,6 +48,7 @@ func New(maxValue int, arg ...Change) *theBar {
 		showPercentage: true,
 		showTime:       true,
 		isFinished:     false,
+		description:    "Progress",
 	}
 
 	for _, o := range arg {
@@ -85,16 +59,16 @@ func New(maxValue int, arg ...Change) *theBar {
 }
 
 func (b *theBar) update(i int) {
-
 	if b.isFinished {
-		return
 	}
-
 	level := b.width * i / b.maxValue
 	progress := strings.Repeat(string(b.theme.ProgressChar), level)
 	blanks := strings.Repeat(" ", b.width-level)
 
-	fmt.Printf("\rProgress: %s%s%s%s", string(b.theme.StartChar), progress, blanks, string(b.theme.EndChar))
+	whatColorStartEnd := getColor(b.theme.StartEndColor)
+	whatColorProgress := getColor(b.theme.ProgressColor)
+
+	fmt.Printf("\r%s: %s%s%s%s", b.description, whatColorStartEnd((string(b.theme.StartChar))), whatColorProgress(progress), blanks, whatColorStartEnd(string(b.theme.EndChar)))
 
 	if b.showPercentage {
 		percentage := 100 * float32(i) / float32(b.maxValue)
@@ -121,7 +95,7 @@ func (b *theBar) end() {
 	fmt.Printf("\nTime it took: %fs\n", elapsed.Seconds())
 }
 
-func (b *theBar) Set(i int) {
+func (b *theBar) set(i int) {
 	b.lock.Lock()
 	defer b.lock.Unlock()
 
@@ -138,18 +112,24 @@ func (b *theBar) Set(i int) {
 	}
 }
 
-func (b *theBar) Add(i int) {
-	b.Set(b.value + i)
+func (b *theBar) add(i int) {
+	b.set(b.value + i)
 }
 
 func (b *theBar) Increment() {
-	b.Add(1)
+	b.add(1)
 }
 
+//Start the timer for the bar
 func (b *theBar) Start() {
 	b.startTime = time.Now()
 	fmt.Printf("\n")
-	b.Set(0)
+	b.set(0)
+}
+
+//GetMaxvalue returns the maxvalue from the bar
+func (b *theBar) GetMaxvalue() int {
+	return b.maxValue
 }
 
 //StartNew creates a new bar with default values and takes in Change values if wanted + starts the counter
@@ -161,10 +141,5 @@ func StartNew(maxValue int, arg ...Change) *theBar {
 }
 
 func (b *theBar) Finish() {
-	b.Set(b.maxValue)
-}
-
-//GetMaxvalue returns the maxvalue from the bar
-func (b *theBar) GetMaxvalue() int {
-	return b.maxValue
+	b.set(b.maxValue)
 }

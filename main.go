@@ -8,17 +8,20 @@ import (
 
 //Main test function
 func main() {
+
 	look := progressbar.Style{
-		StartChar:    '!',
-		EndChar:      '!',
-		ProgressChar: 'C',
+		StartChar:     "!",
+		EndChar:       "!",
+		ProgressChar:  "C",
+		StartEndColor: "Red",
+		ProgressColor: "Black",
 	}
-	test := progressbar.StartNew(100, progressbar.SetWidth(50), progressbar.SetStyle(look), progressbar.BarShowPercent(false),
-		progressbar.BarShowTime(false))
+	test := progressbar.StartNew(50, progressbar.SetWidth(50), progressbar.ShowPercent(false),
+		progressbar.ShowTime(false), progressbar.SetStyle(look), progressbar.NewDescription("HAHA"))
+
 	for i := 0; i < test.GetMaxvalue(); i++ {
 		test.Increment()
-		time.Sleep(100 * time.Millisecond)
-
+		time.Sleep(80 * time.Millisecond)
 	}
 	test.Finish()
 }
