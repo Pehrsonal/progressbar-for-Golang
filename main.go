@@ -42,7 +42,8 @@ func main() {
 	}
 	hest.Finish()
 
-	ba := progressbar.StartNew(50, progressbar.SetWidth(10), progressbar.SetStyle(look1))
+	ba := progressbar.StartNew(50, progressbar.SetWidth(10), progressbar.SetStyle(look1)
+		progressbar.ShowPercent(false))
 	for i := 0; i < ba.GetMaxvalue(); i++ {
 		ba.Increment()
 		time.Sleep(60 * time.Millisecond)
