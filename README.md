@@ -20,3 +20,6 @@ for more info see -> [Time_Estimate_File](https://github.com/Pehrsonal/progressb
 
 ## Weekly Diary-blog
 [Link Weekly Diary](https://docs.google.com/document/d/1dffjBnzQhBu6OpY11p0MNKGw9TnxKaFTgpuDHYp3rK4/edit?usp=sharing)
+
+## License
+See the [LICENSE](LICENSE.md) file for license rights and limitations (MIT).
