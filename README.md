@@ -7,11 +7,51 @@ works on all operating system with go installed!!
 ```
 go get -u github.com/Pehrsonal/Progressbar-For-Golang/progressbar
 ```
-```
-In .go file import -> "github.com/Pehrsonal/Progressbar-For-Golang/progressbar"
-```
 ## HOW TO USE
-.....
+```
+package main
+
+import (
+  "github.com/Pehrsonal/Progressbar-For-Golang/progressbar"
+  "time"
+)
+
+func main() {
+  bar := progressbar.StartNew(MaxValue, ...Custom features)
+  for i := 0; i < bar.GetMaxvalue(); i++ {
+		ba.Increment()
+		time.Sleep(60 * time.Millisecond) // Sleep represent you doing something inside loop
+  }
+  bar.Finish()
+}
+```
+Custom features : 
+```
+SetWidth(int) , ShowPercent(bool) , ShowTime(bool), Newdescription(string), Setstyle(struct Style)
+```
+Style and color :
+Available colors atm = White, Black, Red, Blue, Green and Yellow!
+```
+//You can change style of the bar with the style struct. 
+do so with function setStyle. Here is two examples
+barstyle := progressbar.Style{
+		StartChar:     "!",
+		EndChar:       "!",
+		ProgressChar:  "C",
+		StartEndColor: "Red",
+		ProgressColor: "Yellow",
+	}
+
+	barstyle2 := progressbar.Style{
+		StartChar:     "{",
+		EndChar:       "}",
+		ProgressChar:  "%",
+		StartEndColor: "Blue",
+		ProgressColor: "Red",
+	}
+  Then you do it like this: 
+  testbarwithStyle := progressbar.StartNew(50, progressbar.SetWidth(10), progressbar.SetStyle(barstyle))
+```
 
 ## Time Limits 
 125 hours for budget on this project.
