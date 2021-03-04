@@ -1,3 +1,5 @@
+//Package progressbar makes it possible to create a progressbar to see the progress in
+// any kind of loops and how long time the work in it takes!
 package progressbar
 
 import (
@@ -7,7 +9,7 @@ import (
 	"time"
 )
 
-//theBar struct for declaring whats inside
+//theBar struct for declaring whats is needed for the progressbar
 type theBar struct {
 	width          int
 	value          int
@@ -21,7 +23,7 @@ type theBar struct {
 	description    string
 }
 
-//Style is how to progressbar will look
+//Style is how to progressbar will look and what colors it will have
 type Style struct {
 	StartChar     string
 	EndChar       string
@@ -36,7 +38,7 @@ func (b *theBar) GetMaxvalue() int {
 }
 
 //New Creates a new bar with default values
-func New(maxValue int, arg ...Change) (*theBar) {
+func New(maxValue int, arg ...Change) *theBar {
 	//Default values of the progressbar
 	theme := Style{
 		StartChar:     "{",
@@ -63,6 +65,7 @@ func New(maxValue int, arg ...Change) (*theBar) {
 	return &bar
 }
 
+// update updates the bar and prints the update in terminal
 func (b *theBar) update(i int) {
 	if b.isFinished {
 	}
@@ -87,6 +90,7 @@ func (b *theBar) update(i int) {
 	b.value = i
 }
 
+// end Checks if bar is finished
 func (b *theBar) end() {
 
 	if b.isFinished {
@@ -100,6 +104,7 @@ func (b *theBar) end() {
 	fmt.Printf("\nTime it took: %fs\n", elapsed.Seconds())
 }
 
+//set sets and updates the new values in progressbar
 func (b *theBar) set(i int) {
 	b.lock.Lock()
 	defer b.lock.Unlock()
@@ -117,10 +122,12 @@ func (b *theBar) set(i int) {
 	}
 }
 
+//add adds vallue
 func (b *theBar) add(i int) {
 	b.set(b.value + i)
 }
 
+//Incremtent is the exported function that is used to increment the bar 
 func (b *theBar) Increment() {
 	b.add(1)
 }
@@ -140,6 +147,7 @@ func StartNew(maxValue int, arg ...Change) *theBar {
 	return bar
 }
 
+//Finish ends the BAr and fills it out with the Maxvalue
 func (b *theBar) Finish() {
 	b.set(b.maxValue)
 }

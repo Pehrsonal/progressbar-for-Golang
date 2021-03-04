@@ -1,9 +1,14 @@
+//Package progressbar makes it possible to create a progressbar to see the progress in
+// any kind of loops and how long time the work in it takes!
 package progressbar
 
 import (
 	"github.com/fatih/color"
 )
 
+//
+// Made functions for the "normal colors" this for easier use for customers
+//
 func getWhite() func(...interface{}) string {
 	c := color.New(color.FgWhite).SprintFunc()
 	return c
@@ -29,6 +34,7 @@ func getYellow() func(...interface{}) string {
 	return c
 }
 
+//getColor is a switch that only checks what color they want if none the bar is White
 func getColor(rec string) func(...interface{}) string {
 	switch rec {
 	case "White":

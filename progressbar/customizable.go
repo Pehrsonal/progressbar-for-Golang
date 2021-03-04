@@ -1,3 +1,5 @@
+//Package progressbar makes it possible to create a progressbar to see the progress in
+// any kind of loops and how long time the work in it takes!
 package progressbar
 
 import "errors"
