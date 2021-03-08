@@ -17,9 +17,9 @@ import (
 )
 
 func main() {
-  bar := progressbar.StartNew(MaxValue, ...Custom features)
+  bar := progressbar.StartNew(50, ...Custom features)
   for i := 0; i < bar.GetMaxvalue(); i++ {
-		ba.Increment()
+		bar.Increment()
 		time.Sleep(60 * time.Millisecond) // Sleep represent you doing something inside loop
   }
   bar.Finish()
